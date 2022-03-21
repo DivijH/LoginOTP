@@ -106,8 +106,8 @@ class RegisterView(View):
             global otp
             otp = generate_otp()
             print(phone, otp)
-            client = Client('ACe91b64693c270746fdcb2b085043e4cb','c328e2eb6a9efea3cd5f3d9a2cbb99a4')
-            client.messages.create(to='+91'+str(phone), from_='+12514187925', body='One Time Password: '+str(otp))
+            client = Client('<YOUR ACCOUNT SID>','<YOUR ACCOUNT AUTH TOKEN')
+            client.messages.create(to=str(phone), from_='<YOUR ACCOUNT PHONE NUMBER >', body='One Time Password: '+str(otp))
             
             return render(request, 'login/otp.html', {
                 'first_name' : first_name,
