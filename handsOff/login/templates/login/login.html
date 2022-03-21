@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'login/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="loginContainer">
+        <h1 id="loginTitle">Login</h1>
+        <p>New Here? <a href="register">Register</a></p>
+
+        <div class="error {% if error %}show{% endif %}">
+            <p>Email and/or password is incorrect</p>
+        </div>
+
+        <form method="POST" action="/">
+            {% csrf_token %}
+            <input type="email" name="email" id="email" placeholder="Email Address" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="submit" id="submit" value="Log In">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'login/register.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="registerContainer">
+        <h1 id="registerTitle">Register</h1>
+        <p>Already have an account? <a href="/">Login</a></p>
+
+        <div class="error {% if error %}show{% endif %}">
+            <p>Email already exists</p>
+        </div>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="firstName" id="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name" required>
+            <input type="email" name="email" id="email" placeholder="Email Address" required>
+            <input type="number" name="phone" id="phone" placeholder="Phone Number" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="submit" id="submit" value="Register">
+        </form>
+    </div>
+{% endblock %}

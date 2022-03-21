@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Verify
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'login/otp.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="otpContainer">
+        <h1 id="otpTitle">Verify OTP</h1>
+        <p>OTP has been sent to {{ phone }}</p>
+
+        <div class="error {% if error %}show{% endif %}">
+            <p>Invalid OTP</p>
+        </div>
+
+        <form method="POST" action="/otp">
+            {% csrf_token %}
+            <input type="hidden" name="firstName" value="{{ first_name }}">
+            <input type="hidden" name="lastName" value="{{ last_name }}">
+            <input type="hidden" name="phone" value="{{ phone }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <input type="hidden" name="password" value="{{ password }}">
+            
+            <input type="number" name="code" id="code" placeholder="OTP" required>
+            <input type="submit" id="submit" value="Register">
+        </form>
+    </div>
+{% endblock %}
