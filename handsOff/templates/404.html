@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    404
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '404.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if error %}
+        <h1>{{ error }}</h1>
+    {% else %}
+        <h1>404. Page not found.</h1>
+    {% endif %}
+{% endblock %}
